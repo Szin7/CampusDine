@@ -1,0 +1,19 @@
+[Unit]
+Description=CampusDine retry-mail
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=campusdine
+Group=campusdine
+WorkingDirectory=/opt/campusdine/backend
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/etc/campusdine/backend.env
+ExecStart=/opt/campusdine/.venv/bin/python -m app.jobs.retry_notifications
+TimeoutStartSec=30min
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/campusdine

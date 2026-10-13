@@ -1,0 +1,3 @@
+# User crontab on a UTC server. Replace /opt/campusdine with the installation path.
+# 20:15 UTC = 02:00 Asia/Kathmandu the following day.
+15 20 * * * cd /opt/campusdine/backend && /opt/campusdine/.venv/bin/python -m app.jobs.rebuild_recommendations >> /opt/campusdine/backend/data/recommendations.log 2>&1

@@ -1,0 +1,10 @@
+[Unit]
+Description=Schedule CampusDine recommendations
+
+[Timer]
+OnCalendar=*-*-* 02:00:00 Asia/Kathmandu
+Persistent=true
+AccuracySec=10s
+
+[Install]
+WantedBy=timers.target

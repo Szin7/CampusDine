@@ -1,0 +1,24 @@
+[Unit]
+Description=CampusDine Next.js
+After=network.target campusdine-api.service
+
+[Service]
+Type=simple
+User=campusdine
+Group=campusdine
+WorkingDirectory=/opt/campusdine/frontend
+Environment=NODE_ENV=production
+Environment=API_ORIGIN=http://127.0.0.1:8000
+ExecStart=/usr/bin/node /opt/campusdine/frontend/node_modules/next/dist/bin/next start --hostname 127.0.0.1 --port 3000
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=40
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/campusdine/frontend/.next
+
+[Install]
+WantedBy=multi-user.target

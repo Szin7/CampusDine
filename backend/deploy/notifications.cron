@@ -1,0 +1,4 @@
+# User crontab on a UTC server. Replace installation and venv paths.
+* * * * * cd /opt/campusdine/backend && /opt/campusdine/.venv/bin/python -m app.jobs.retry_notifications >> /opt/campusdine/backend/data/notification-retries.log 2>&1
+# 18:20 UTC = 00:05 the next day in Nepal. Daily idempotent month-end catch-up.
+20 18 * * * cd /opt/campusdine/backend && /opt/campusdine/.venv/bin/python -m app.jobs.monthly_billing >> /opt/campusdine/backend/data/monthly-billing.log 2>&1
